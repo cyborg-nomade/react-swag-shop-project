@@ -1,8 +1,12 @@
 import React from 'react';
-import logo from './logo.svg';
+import logo from '../logo.svg';
 import './App.css';
+import HttpService from '../services/http-service';
+
+const http = new HttpService();
 
 function App() {
+  http.getProducts();
   return (
     <div className="App">
       <header className="App-header">
