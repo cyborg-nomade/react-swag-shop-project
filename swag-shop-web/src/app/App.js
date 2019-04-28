@@ -5,8 +5,16 @@ import HttpService from '../services/http-service';
 
 const http = new HttpService();
 
+function loadData() {
+  http.getProducts().then(products => {
+    console.log(products);
+  }, err => {
+
+  });
+}
+
 function App() {
-  http.getProducts();
+  loadData();
   return (
     <div className="App">
       <header className="App-header">
