@@ -1,3 +1,5 @@
+export const NOTIF_WISHLIST_CHANGED = "notif_wishlist_changed";
+
 let instance = null;
 var observers = {};
 
@@ -9,6 +11,14 @@ class NotificationService {
 
     return instance;
 
+  }
+
+  postNotification = (notifName, data) => {
+    let obs = observers[notifName];
+    for (var i = 0; i < obs.length; i++) {
+      var obj = obs[i];
+      obj.callBack(data);
+    }
   }
 
   removeObserver = (observer, notifName) => {
@@ -40,3 +50,5 @@ class NotificationService {
     observers[notifName].push(obj);
   }
 }
+
+export default NotificationService;
