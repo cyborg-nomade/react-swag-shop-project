@@ -6,33 +6,50 @@ import Product from '../product/product.js';
 
 const http = new HttpService();
 
-function loadData() {
-  http.getProducts().then(products => {
-    console.log(products);
-  }, err => {
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {products:[]};
 
-  });
-}
+    //bind functions
+    this.loadData = this.loadData.bind(this);
+    this.productList = this.productList.bind(this);
+    this.loadData();
+  }
 
-function App() {
-  loadData();
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-      </header>
-      <div className="container App-main">
-        <div className="row">
-          <Product className="col-sm-4" price="4.23" title="Stupid Title" imgURL="https://previews.123rf.com/images/vectorzilla/vectorzilla0801/vectorzilla080100009/2479192-cute-pink-elephant-vector-illustration.jpg" />
-          <Product className="col-sm-4" price="4.23" title="Stupid Title" imgURL="https://previews.123rf.com/images/vectorzilla/vectorzilla0801/vectorzilla080100009/2479192-cute-pink-elephant-vector-illustration.jpg" />
-          <Product className="col-sm-4" price="4.23" title="Stupid Title" imgURL="https://previews.123rf.com/images/vectorzilla/vectorzilla0801/vectorzilla080100009/2479192-cute-pink-elephant-vector-illustration.jpg" />
-          <Product className="col-sm-4" price="4.23" title="Stupid Title" imgURL="https://previews.123rf.com/images/vectorzilla/vectorzilla0801/vectorzilla080100009/2479192-cute-pink-elephant-vector-illustration.jpg" />
-          <Product className="col-sm-4" price="4.23" title="Stupid Title" imgURL="https://previews.123rf.com/images/vectorzilla/vectorzilla0801/vectorzilla080100009/2479192-cute-pink-elephant-vector-illustration.jpg" />
+  loadData = () => {
+    var self = this;
+    http.getProducts().then(data => {
+      self.setState({products: data})
+    }, err => {
+
+    });
+  }
+
+  productList = () => {
+    const list = this.state.products.map((product) =>
+          <div className="col-sm-4" keys={product._id}>
+            <Product title={product.title} price={product.price} imgUrl={product.imgUrl} />
+          </div>
+        );
+        return (list);
+  }
+
+  render() {
+    return (
+        <div className="App">
+          <header className="App-header">
+            <img src={logo} className="App-logo" alt="logo" />
+          </header>
+          <div className="container App-main">
+            <div className="row">
+              {this.productList()}
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
 
-  );
+      );
+  }
 }
 
 export default App;
