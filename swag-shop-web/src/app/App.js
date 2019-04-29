@@ -21,8 +21,14 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
       </header>
-      <div className="App-main">
-        <Product />
+      <div className="container App-main">
+        <div className="row">
+          <Product className="col-sm-4" price="4.23" title="Stupid Title" imgURL="https://previews.123rf.com/images/vectorzilla/vectorzilla0801/vectorzilla080100009/2479192-cute-pink-elephant-vector-illustration.jpg" />
+          <Product className="col-sm-4" price="4.23" title="Stupid Title" imgURL="https://previews.123rf.com/images/vectorzilla/vectorzilla0801/vectorzilla080100009/2479192-cute-pink-elephant-vector-illustration.jpg" />
+          <Product className="col-sm-4" price="4.23" title="Stupid Title" imgURL="https://previews.123rf.com/images/vectorzilla/vectorzilla0801/vectorzilla080100009/2479192-cute-pink-elephant-vector-illustration.jpg" />
+          <Product className="col-sm-4" price="4.23" title="Stupid Title" imgURL="https://previews.123rf.com/images/vectorzilla/vectorzilla0801/vectorzilla080100009/2479192-cute-pink-elephant-vector-illustration.jpg" />
+          <Product className="col-sm-4" price="4.23" title="Stupid Title" imgURL="https://previews.123rf.com/images/vectorzilla/vectorzilla0801/vectorzilla080100009/2479192-cute-pink-elephant-vector-illustration.jpg" />
+        </div>
       </div>
     </div>
 
