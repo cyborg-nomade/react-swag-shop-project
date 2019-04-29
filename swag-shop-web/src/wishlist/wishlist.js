@@ -3,6 +3,8 @@ import React, {
 } from 'react';
 
 import './wishlist.css';
+import DataService from '../services/data-service';
+
 
 import ProductCondensed from '../product-condensed/product-condensed';
 
