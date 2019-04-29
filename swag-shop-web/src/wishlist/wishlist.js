@@ -16,7 +16,7 @@ class WishList extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {wishlist:[]}
+    this.state = {wishList:[]}
     //Bind functions
     this.createWishList = this.createWishList.bind(this);
     this.onWishListChanged = this.onWishListChanged.bind(this);
@@ -26,7 +26,7 @@ class WishList extends Component {
     ns.addObserver(NOTIF_WISHLIST_CHANGED, this, this.onWishListChanged);
   }
 
-  componentWillUnmound() {
+  componentWillUnmount() {
     ns.removeObserver(this, NOTIF_WISHLIST_CHANGED);
   }
 
@@ -35,7 +35,7 @@ class WishList extends Component {
   }
 
   createWishList = () => {
-    const list = this.state.wishlist.map((product) =>
+    const list = this.state.wishList.map((product) =>
       <ProductCondensed product={product} key={product._id} />
     );
 
